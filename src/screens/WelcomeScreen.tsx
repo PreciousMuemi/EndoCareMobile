@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const WelcomeScreen = ({navigation}) => {
     return (
@@ -10,7 +11,14 @@ const WelcomeScreen = ({navigation}) => {
                 <Text style={styles.logoText}>EndoCare</Text>
             </Animatable.View>
             <Animatable.View style={styles.buttonContainer}>
-                <TouchableOpacity
+                <TouchableOpacity style={styles.button}>
+                    <Icon name="google" size={18} color="#fff" />
+                    <Text style={styles.buttonText}>Continue With Google</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.button}>
+                    <Icon name="envelope" size={18} color="#fff" />
+                    <Text style={styles.buttonText}>Continue With Email</Text>
+                </TouchableOpacity>
             </Animatable.View>
         </View>
     );
@@ -29,8 +37,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     logo: {
-        width: 400,
-        height: 400,
+        width: 300,
+        height: 300,
     },
     logoText: {
         fontSize: 50,
@@ -44,9 +52,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingBottom: 30,
     },
-    googleButton: {
-        ba
-    }
+    button: {
+        backgroundColor: '#114232',
+        width: '80%',
+        padding: 15,
+        borderRadius: 25,
+        alignItems: 'center',
+        marginBottom: 20,
+        justifyContent: 'center',
+        flexDirection: 'row',
+    },
+    buttonText: {
+        color: '#fff',
+        marginLeft: 22,
+        fontWeight: 'bold',
+    },
 });
 
 export default WelcomeScreen;
