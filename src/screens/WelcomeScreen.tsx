@@ -10,7 +10,7 @@ const WelcomeScreen = ({navigation}) => {
                 <Image source={require('../assets/endologo.png')} style={styles.logo} />
                 <Text style={styles.logoText}>EndoCare</Text>
             </Animatable.View>
-            <Animatable.View style={styles.buttonContainer}>
+            <Animatable.View animation="bounceIn" style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button}>
                     <Icon name="google" size={18} color="#fff" />
                     <Text style={styles.buttonText}>Continue With Google</Text>
