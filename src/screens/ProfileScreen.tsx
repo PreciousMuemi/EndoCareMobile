@@ -1,0 +1,151 @@
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+const ProfileScreen = () => {
+  const userInfo = {
+    name: 'Jane Doe',
+    email: 'jane.doe@example.com',
+    major: 'Computer Science',
+    year: 'Junior',
+    avatar: 'https://picsum.photos/id/1005/200/200',
+  };
+
+  const analytics = [
+    {title: 'Events Attended', value: 15, icon: 'calendar-check'},
+    {title: 'Posts', value: 27, icon: 'post'},
+    {title: 'Connections', value: 89, icon: 'account-group'},
+  ];
+
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Image source={{uri: userInfo.avatar}} style={styles.avatar} />
+        <Text style={styles.name}>{userInfo.name}</Text>
+        <Text style={styles.email}>{userInfo.email}</Text>
+      </View>
+
+      <View style={styles.infoSection}>
+        <Text style={styles.sectionTitle}>Academic Info</Text>
+        <View style={styles.infoItem}>
+          <Icon name="school" size={20} color="#4a69bd" />
+          <Text style={styles.infoText}>Major: {userInfo.major}</Text>
+        </View>
+        <View style={styles.infoItem}>
+          <Icon name="calendar-clock" size={20} color="#4a69bd" />
+          <Text style={styles.infoText}>Year: {userInfo.year}</Text>
+        </View>
+      </View>
+
+      <View style={styles.analyticsSection}>
+        <Text style={styles.sectionTitle}>Analytics</Text>
+        <View style={styles.analyticsGrid}>
+          {analytics.map((item, index) => (
+            <View key={index} style={styles.analyticItem}>
+              <Icon name={item.icon} size={30} color="#4a69bd" />
+              <Text style={styles.analyticValue}>{item.value}</Text>
+              <Text style={styles.analyticTitle}>{item.title}</Text>
+            </View>
+          ))}
+        </View>
+      </View>
+
+      <TouchableOpacity style={styles.editButton}>
+        <Text style={styles.editButtonText}>Edit Profile</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f0f0f0',
+  },
+  header: {
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: '#fff',
+  },
+  avatar: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    marginBottom: 10,
+  },
+  name: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  email: {
+    fontSize: 16,
+    color: '#666',
+  },
+  infoSection: {
+    backgroundColor: '#fff',
+    padding: 20,
+    marginTop: 20,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
+  },
+  infoItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  infoText: {
+    fontSize: 16,
+    color: '#333',
+    marginLeft: 10,
+  },
+  analyticsSection: {
+    backgroundColor: '#fff',
+    padding: 20,
+    marginTop: 20,
+  },
+  analyticsGrid: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  analyticItem: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  analyticValue: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#4a69bd',
+    marginTop: 5,
+  },
+  analyticTitle: {
+    fontSize: 14,
+    color: '#666',
+    textAlign: 'center',
+  },
+  editButton: {
+    backgroundColor: '#4a69bd',
+    padding: 15,
+    margin: 20,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  editButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
+
+export default ProfileScreen;
