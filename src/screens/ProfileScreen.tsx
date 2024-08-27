@@ -13,16 +13,8 @@ const ProfileScreen = () => {
   const userInfo = {
     name: 'Jane Doe',
     email: 'jane.doe@example.com',
-    major: 'Computer Science',
-    year: 'Junior',
     avatar: 'https://picsum.photos/id/1005/200/200',
   };
-
-  const analytics = [
-    {title: 'Events Attended', value: 15, icon: 'calendar-check'},
-    {title: 'Posts', value: 27, icon: 'post'},
-    {title: 'Safe Days', value: 89, icon: 'account-group'},
-  ];
 
   return (
     <ScrollView style={styles.container}>
@@ -30,19 +22,6 @@ const ProfileScreen = () => {
         <Image source={{uri: userInfo.avatar}} style={styles.avatar} />
         <Text style={styles.name}>{userInfo.name}</Text>
         <Text style={styles.email}>{userInfo.email}</Text>
-      </View>
-
-      <View style={styles.analyticsSection}>
-        <Text style={styles.sectionTitle}>Analytics</Text>
-        <View style={styles.analyticsGrid}>
-          {analytics.map((item, index) => (
-            <View key={index} style={styles.analyticItem}>
-              <Icon name={item.icon} size={30} color="#4a69bd" />
-              <Text style={styles.analyticValue}>{item.value}</Text>
-              <Text style={styles.analyticTitle}>{item.title}</Text>
-            </View>
-          ))}
-        </View>
       </View>
 
       <TouchableOpacity style={styles.editButton}>
@@ -123,7 +102,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   editButton: {
-    backgroundColor: '#4a69bd',
+    backgroundColor: '#114232',
     padding: 15,
     margin: 20,
     borderRadius: 5,
