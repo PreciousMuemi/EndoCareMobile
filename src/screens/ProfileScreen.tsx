@@ -1,117 +1,156 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const ProfileScreen = () => {
-  const userInfo = {
-    name: 'Jane Doe',
-    email: 'jane.doe@example.com',
-    avatar: 'https://picsum.photos/id/1005/200/200',
+  const handleEditProfile = () => {
+    // Navigate to the edit profile screen
+  };
+
+  const handleSettings = () => {
+    // Navigate to settings screen
+  };
+
+  const handleLogout = () => {
+    // Handle logout logic here
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Image source={{uri: userInfo.avatar}} style={styles.avatar} />
-        <Text style={styles.name}>{userInfo.name}</Text>
-        <Text style={styles.email}>{userInfo.email}</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      {/* Profile Picture */}
+      <View style={styles.profilePictureContainer}>
+        <Image
+          source={{ uri: 'https://via.placeholder.com/150' }} // Replace with actual user profile image
+          style={styles.profilePicture}
+        />
+        <TouchableOpacity style={styles.editIcon} onPress={handleEditProfile}>
+          <Icon name="pencil" size={24} color="#ffffff" />
+        </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.editButton}>
-        <Text style={styles.editButtonText}>Edit Profile</Text>
-      </TouchableOpacity>
+      {/* User Details */}
+      <Text style={styles.userName}>Jane Doe</Text>
+      <Text style={styles.userEmail}>jane.doe@example.com</Text>
+
+      {/* Cycle Information */}
+      <View style={styles.cycleInfoContainer}>
+        <View style={styles.cycleInfoRow}>
+          <Icon name="calendar" size={20} color="#e83e8c" />
+          <Text style={styles.cycleInfoText}>Next Period: Sept 10, 2024</Text>
+        </View>
+        <View style={styles.cycleInfoRow}>
+          <Icon name="time" size={20} color="#e83e8c" />
+          <Text style={styles.cycleInfoText}>Cycle Length: 28 Days</Text>
+        </View>
+        <View style={styles.cycleInfoRow}>
+          <Icon name="water" size={20} color="#e83e8c" />
+          <Text style={styles.cycleInfoText}>Last Period: Aug 14, 2024</Text>
+        </View>
+      </View>
+
+      {/* Settings and Logout Buttons */}
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity style={styles.settingsButton} onPress={handleSettings}>
+          <Icon name="settings-outline" size={20} color="#ffffff" style={styles.buttonIcon} />
+          <Text style={styles.buttonText}>Settings</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+          <Icon name="log-out-outline" size={20} color="#ffffff" style={styles.buttonIcon} />
+          <Text style={styles.buttonText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#f0f0f0',
-  },
-  header: {
+    flexGrow: 1,
     alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#fff',
+    paddingVertical: 40,
+    backgroundColor: '#F7F6BB',
   },
-  avatar: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    marginBottom: 10,
+  profilePictureContainer: {
+    marginBottom: 20,
+    position: 'relative',
+    borderRadius: 75,
+    overflow: 'hidden',
+    borderWidth: 4,
+    borderColor: '#114232',
   },
-  name: {
-    fontSize: 24,
+  profilePicture: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+  },
+  editIcon: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    backgroundColor: '#114232',
+    padding: 8,
+    borderRadius: 20,
+  },
+  userName: {
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#114232',
+    marginBottom: 5,
   },
-  email: {
+  userEmail: {
     fontSize: 16,
-    color: '#666',
+    color: '#6c757d',
+    marginBottom: 30,
   },
-  infoSection: {
-    backgroundColor: '#fff',
-    padding: 20,
-    marginTop: 20,
+  cycleInfoContainer: {
+    alignItems: 'flex-start',
+    marginBottom: 30,
+    width: '80%',
   },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 10,
-  },
-  infoItem: {
+  cycleInfoRow: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
   },
-  infoText: {
+  cycleInfoText: {
     fontSize: 16,
-    color: '#333',
+    color: '#495057',
     marginLeft: 10,
   },
-  analyticsSection: {
-    backgroundColor: '#fff',
-    padding: 20,
-    marginTop: 20,
+  buttonsContainer: {
+    width: '80%',
+    alignItems: 'center',
   },
-  analyticsGrid: {
+  settingsButton: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  analyticItem: {
     alignItems: 'center',
-    flex: 1,
-  },
-  analyticValue: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#4a69bd',
-    marginTop: 5,
-  },
-  analyticTitle: {
-    fontSize: 14,
-    color: '#666',
-    textAlign: 'center',
-  },
-  editButton: {
     backgroundColor: '#114232',
-    padding: 15,
-    margin: 20,
-    borderRadius: 5,
-    alignItems: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginBottom: 15,
+    width: '100%',
+    justifyContent: 'center',
   },
-  editButtonText: {
-    color: '#fff',
-    fontSize: 16,
+  logoutButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#87A922',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    width: '100%',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: '#ffffff',
+    fontSize: 18,
     fontWeight: 'bold',
+    marginLeft: 10,
+  },
+  buttonIcon: {
+    marginRight: 10,
   },
 });
 
