@@ -1,52 +1,47 @@
 import React from "react";
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View, FlatList, Image } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Carousel from 'react-native-snap-carousel';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 const HEADER_HEIGHT = 50;
-const CAROSEL_ITEM_WIDTH = width * 0.8;
 
 const getGreetingInfo = () => {
     const hour = new Date().getHours();
-    if (hour < 12) return {text: 'Good Morning', icon: 'weather-sunny'};
-    if (hour < 18) return {text: 'Good Afternoon', icon: 'weather-hazy'}
-    if (hour < 20) return {text: 'Good Evening', icon: 'weather-sunset'}
-    return {text: 'Good Night', icon: 'weather-night'}
+    if (hour < 12) return { text: 'Good Morning', icon: 'weather-sunny' };
+    if (hour < 18) return { text: 'Good Afternoon', icon: 'weather-hazy' };
+    if (hour < 20) return { text: 'Good Evening', icon: 'weather-sunset' };
+    return { text: 'Good Night', icon: 'weather-night' };
 }
 
 const HomeScreen = ({ navigation }) => {
     const insets = useSafeAreaInsets();
     const greetingInfo = getGreetingInfo();
 
-    const renderCarouselItem = ({ item }) => (
-        <View style={styles.carouselItem}>
-            <Image source={{ uri: item.image }} style={styles.carouselImage} />
-            <Text style={styles.carouselTitle}>{item.title}</Text>
+    const renderListItem = ({ item }) => (
+        <View style={styles.listItem}>
+            <Image source={{ uri: item.image }} style={styles.listItemImage} />
+            <Text style={styles.listItemTitle}>{item.title}</Text>
         </View>
     );
 
     const blogs = [
         { title: 'Understanding Menstrual Cycles', image: 'https://via.placeholder.com/150' },
         { title: 'Healthy Habits During Periods', image: 'https://via.placeholder.com/150' },
-        // Add more blog items here
     ];
 
     const exercises = [
         { title: 'Yoga for Period Pain', image: 'https://via.placeholder.com/150' },
         { title: 'Simple Stretches', image: 'https://via.placeholder.com/150' },
-        // Add more exercise items here
     ];
 
     const didYouKnow = [
         { title: 'Did you know? Menstrual cycles can...', image: 'https://via.placeholder.com/150' },
         { title: 'Interesting Facts About Periods', image: 'https://via.placeholder.com/150' },
-        // Add more facts here
     ];
 
     return (
-        <ScrollView style={[styles.container, {paddingTop: insets.top}]}>
+        <ScrollView style={[styles.container, { paddingTop: insets.top }]}>
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>EndoCare</Text>
                 <View style={styles.headerIcons}>
@@ -69,45 +64,39 @@ const HomeScreen = ({ navigation }) => {
                 </View>
             </View>
 
-            {/* Blogs Carousel */}
-            <View style={styles.carouselSection}>
+            {/* Blogs Horizontal List */}
+            <View style={styles.listSection}>
                 <Text style={styles.sectionTitle}>Blogs</Text>
-                <Carousel
+                <FlatList
                     data={blogs}
-                    renderItem={renderCarouselItem}
-                    sliderWidth={width}
-                    itemWidth={CAROSEL_ITEM_WIDTH}
-                    inactiveSlideScale={0.95}
-                    inactiveSlideOpacity={0.7}
-                    loop
+                    renderItem={renderListItem}
+                    keyExtractor={(item, index) => index.toString()}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
                 />
             </View>
 
-            {/* Exercises Carousel */}
-            <View style={styles.carouselSection}>
+            {/* Exercises Horizontal List */}
+            <View style={styles.listSection}>
                 <Text style={styles.sectionTitle}>Exercises</Text>
-                <Carousel
+                <FlatList
                     data={exercises}
-                    renderItem={renderCarouselItem}
-                    sliderWidth={width}
-                    itemWidth={CAROSEL_ITEM_WIDTH}
-                    inactiveSlideScale={0.95}
-                    inactiveSlideOpacity={0.7}
-                    loop
+                    renderItem={renderListItem}
+                    keyExtractor={(item, index) => index.toString()}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
                 />
             </View>
 
-            {/* Did You Know Carousel */}
-            <View style={styles.carouselSection}>
+            {/* Did You Know Horizontal List */}
+            <View style={styles.listSection}>
                 <Text style={styles.sectionTitle}>Did You Know?</Text>
-                <Carousel
+                <FlatList
                     data={didYouKnow}
-                    renderItem={renderCarouselItem}
-                    sliderWidth={width}
-                    itemWidth={CAROSEL_ITEM_WIDTH}
-                    inactiveSlideScale={0.95}
-                    inactiveSlideOpacity={0.7}
-                    loop
+                    renderItem={renderListItem}
+                    keyExtractor={(item, index) => index.toString()}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
                 />
             </View>
 
@@ -172,7 +161,7 @@ const styles = StyleSheet.create({
         color: '#333',
         marginTop: 5,
     },
-    carouselSection: {
+    listSection: {
         marginVertical: 20,
     },
     sectionTitle: {
@@ -182,20 +171,23 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         marginBottom: 10,
     },
-    carouselItem: {
+    listItem: {
         backgroundColor: '#fff',
         borderRadius: 10,
         overflow: 'hidden',
         elevation: 2,
         paddingBottom: 10,
+        marginHorizontal: 10,
+        width: 150,
+        alignItems: 'center',
     },
-    carouselImage: {
+    listItemImage: {
         width: '100%',
-        height: 150,
+        height: 100,
         resizeMode: 'cover',
     },
-    carouselTitle: {
-        fontSize: 16,
+    listItemTitle: {
+        fontSize: 14,
         fontWeight: 'bold',
         color: '#114232',
         padding: 10,

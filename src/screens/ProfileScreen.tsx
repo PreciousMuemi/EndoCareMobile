@@ -2,17 +2,19 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
   const handleEditProfile = () => {
     // Navigate to the edit profile screen
   };
 
   const handleSettings = () => {
     // Navigate to settings screen
+    navigation.navigate('Settings');
   };
 
   const handleLogout = () => {
     // Handle logout logic here
+    navigation.navigate('welcome');
   };
 
   return (
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     paddingVertical: 40,
-    backgroundColor: '#F7F6BB',
+    backgroundColor: '#f0f0f0',
   },
   profilePictureContainer: {
     marginBottom: 20,
