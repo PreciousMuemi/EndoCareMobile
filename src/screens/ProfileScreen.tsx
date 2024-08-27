@@ -21,7 +21,7 @@ const ProfileScreen = () => {
   const analytics = [
     {title: 'Events Attended', value: 15, icon: 'calendar-check'},
     {title: 'Posts', value: 27, icon: 'post'},
-    {title: 'Connections', value: 89, icon: 'account-group'},
+    {title: 'Safe Days', value: 89, icon: 'account-group'},
   ];
 
   return (
@@ -30,18 +30,6 @@ const ProfileScreen = () => {
         <Image source={{uri: userInfo.avatar}} style={styles.avatar} />
         <Text style={styles.name}>{userInfo.name}</Text>
         <Text style={styles.email}>{userInfo.email}</Text>
-      </View>
-
-      <View style={styles.infoSection}>
-        <Text style={styles.sectionTitle}>Academic Info</Text>
-        <View style={styles.infoItem}>
-          <Icon name="school" size={20} color="#4a69bd" />
-          <Text style={styles.infoText}>Major: {userInfo.major}</Text>
-        </View>
-        <View style={styles.infoItem}>
-          <Icon name="calendar-clock" size={20} color="#4a69bd" />
-          <Text style={styles.infoText}>Year: {userInfo.year}</Text>
-        </View>
       </View>
 
       <View style={styles.analyticsSection}>
