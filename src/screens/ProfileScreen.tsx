@@ -37,15 +37,15 @@ const ProfileScreen = ({ navigation }) => {
       {/* Cycle Information */}
       <View style={styles.cycleInfoContainer}>
         <View style={styles.cycleInfoRow}>
-          <Icon name="calendar" size={20} color="#e83e8c" />
+          <Icon name="calendar" size={20} color="#87A922" />
           <Text style={styles.cycleInfoText}>Next Period: Sept 10, 2024</Text>
         </View>
         <View style={styles.cycleInfoRow}>
-          <Icon name="time" size={20} color="#e83e8c" />
+          <Icon name="time" size={20} color="#87A922" />
           <Text style={styles.cycleInfoText}>Cycle Length: 28 Days</Text>
         </View>
         <View style={styles.cycleInfoRow}>
-          <Icon name="water" size={20} color="#e83e8c" />
+          <Icon name="water" size={20} color="#87A922" />
           <Text style={styles.cycleInfoText}>Last Period: Aug 14, 2024</Text>
         </View>
       </View>

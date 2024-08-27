@@ -9,6 +9,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import BottomTab from './src/components/BottomTab';
 import SignupScreen from './src/screens/SignupScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import PrivacyPolicyScreen from './src/screens/PrivacyPolicyScreen';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const App = () => {
                 <Stack.Screen name="Signup" component={SignupScreen} />
                 <Stack.Screen name="Hometab" component={BottomTab} options={{headerShown: false}} />
                 <Stack.Screen name="Settings" component={SettingsScreen} />
+                <Stack.Screen name="privacy" component={PrivacyPolicyScreen} />
             </Stack.Navigator>
         </NavigationContainer>
         </>
