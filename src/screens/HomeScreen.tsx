@@ -21,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
     const greetingInfo = getGreetingInfo();
 
     const renderBlog = ({item}) => (
-        <TouchableOpacity style={styles.blogCard}>
+        <TouchableOpacity onPress={() => navigation.navigate('BlogDetail', {blogId: item.id})} style={styles.blogCard}>
             <Image source={{uri: item.image}} style={styles.blogImage} />
             <View style={styles.blogInfo}>
                 <Text style={styles.blogTitle}>{item.title}</Text>
@@ -33,23 +33,33 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
     );
 
+    const renderItem = ({item}) => (
+        <TouchableOpacity onPress={() => navigation.navigate('ItemDetail', {itemId: item.id})} style={styles.blogCard}>
+            <Image source={{uri: item.image}} style={styles.blogImage} />
+            <View style={styles.blogInfo}>
+                <Text style={styles.blogTitle}>{item.title}</Text>
+            </View>
+        </TouchableOpacity>
+    );
+
     const mockBlogs = Array.from({length: 5}, (_, i) => ({
         id: i,
         title: `Blog ${i + 1}`,
         date: '2024-01-01',
         image: `https://picsum.photos/200/300?random=${i}`,
-    }))
+    }));
 
     const mockExercises = Array.from({length: 5}, (_, i) => ({
         id: i,
         title: `Exercise ${i + 1}`,
         image: `https://picsum.photos/200/300?random=${i}`,
-    }))
+    }));
 
-    const didYouKnow = [
-        { title: 'Did you know? Menstrual cycles can...', image: 'https://via.placeholder.com/150' },
-        { title: 'Interesting Facts About Periods', image: 'https://via.placeholder.com/150' },
-    ];
+    const mockDidYouKnow = Array.from({length: 5}, (_, i) =>({
+        id: i,
+        title: `Did you know ${i + 1}`,
+        image: `https://picsum.photos/200/300?random=${i}`,
+    }));
 
     return (
         <ScrollView style={[styles.container, { paddingTop: insets.top }]}>
@@ -87,7 +97,14 @@ const HomeScreen = ({ navigation }) => {
                 <Text style={styles.sectionTitle}>Exercises</Text>
                 <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
             </TouchableOpacity>
-            <FlatList data={mockExercises} renderItem={renderBlog} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
+            <FlatList data={mockExercises} renderItem={renderItem} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
+
+            <TouchableOpacity style={styles.sectionHeader}>
+                <Icon name="puzzle" size={24} color="#114232" style={styles.sectionIcon} />
+                <Text style={styles.sectionTitle}>Did You Know?</Text>
+                <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
+            </TouchableOpacity>
+            <FlatList data={mockDidYouKnow} renderItem={renderItem} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
 
         </ScrollView>
     );

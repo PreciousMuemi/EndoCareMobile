@@ -12,6 +12,8 @@ import SettingsScreen from './src/screens/SettingsScreen';
 import PrivacyPolicyScreen from './src/screens/PrivacyPolicyScreen';
 import TermsAndConditionsScreen from './src/screens/TermsAndConditionsScreen';
 import ContactUsScreen from './src/screens/ContactScreen';
+import ItemDetailScreen from './src/screens/ItemDetailScreen';
+import BlogDetailScreen from './src/screens/BlogDetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +30,8 @@ const App = () => {
                 <Stack.Screen name="Privacy" component={PrivacyPolicyScreen} />
                 <Stack.Screen name="Terms" component={TermsAndConditionsScreen} />
                 <Stack.Screen name="Contact" component={ContactUsScreen} />
+                <Stack.Screen name="ItemDetail" component={ItemDetailScreen} />
+                <Stack.Screen name="BlogDetail" component={BlogDetailScreen} options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>
         </>
