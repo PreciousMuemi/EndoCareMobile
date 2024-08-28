@@ -15,6 +15,7 @@ const SignupScreen = ({navigation}) => {
 
   const handleSignUp = () => {
     // Handle login logic
+    navigation.navigate('HomeTab');
   };
 
   return (

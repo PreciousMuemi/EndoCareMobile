@@ -16,6 +16,7 @@ import ItemDetailScreen from './src/screens/ItemDetailScreen';
 import BlogDetailScreen from './src/screens/BlogDetailScreen';
 import BlogListScreen from './src/screens/BlogListScreen';
 import ItemListScreen from './src/screens/ItemListScreen';
+import NotificationsScreen from './src/screens/NotificationScreen';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,7 @@ const App = () => {
                 <Stack.Screen name="ItemDetail" component={ItemDetailScreen} />
                 <Stack.Screen name="BlogList" component={BlogListScreen} />
                 <Stack.Screen name="ItemList" component={ItemListScreen} />
+                <Stack.Screen name="Notifications" component={NotificationsScreen} />
                 <Stack.Screen name="BlogDetail" component={BlogDetailScreen} options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>

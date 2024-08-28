@@ -66,10 +66,10 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>EndoCare</Text>
                 <View style={styles.headerIcons}>
-                    <TouchableOpacity style={styles.headerIcon}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Notifications')} style={styles.headerIcon}>
                         <Icon name="bell" size={20} color="#114232" />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.headerIcon}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Profile')} style={styles.headerIcon}>
                         <Icon name="account-supervisor-circle-outline" size={20} color="#114232" />
                     </TouchableOpacity>
                 </View>

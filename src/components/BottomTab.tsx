@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import ProfileScreen from '../screens/ProfileScreen';
 import HomeScreen from '../screens/HomeScreen';
 import DonationScreen from '../screens/DonationScreen';
+import CalendarScreen from '../screens/CalendarScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +34,15 @@ function BottomTab() {
             options={{
               tabBarIcon: ({ color, size }) => (
                 <MaterialCommunityIcons name="cash-multiple" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Calendar"
+            component={CalendarScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons name="calendar" color={color} size={size} />
               ),
             }}
           />
