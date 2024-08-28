@@ -14,7 +14,7 @@ const ItemDetailScreen = () => {
     id: 1,
     name: 'Item 1',
     description: 'This is a description.',
-    image: 'https://picsum.photos/id/1015/400/200',
+    image: 'https://picsum.photos/200/300?random',
   };
 
   return (

@@ -14,6 +14,8 @@ import TermsAndConditionsScreen from './src/screens/TermsAndConditionsScreen';
 import ContactUsScreen from './src/screens/ContactScreen';
 import ItemDetailScreen from './src/screens/ItemDetailScreen';
 import BlogDetailScreen from './src/screens/BlogDetailScreen';
+import BlogListScreen from './src/screens/BlogListScreen';
+import ItemListScreen from './src/screens/ItemListScreen';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +33,8 @@ const App = () => {
                 <Stack.Screen name="Terms" component={TermsAndConditionsScreen} />
                 <Stack.Screen name="Contact" component={ContactUsScreen} />
                 <Stack.Screen name="ItemDetail" component={ItemDetailScreen} />
+                <Stack.Screen name="BlogList" component={BlogListScreen} />
+                <Stack.Screen name="ItemList" component={ItemListScreen} />
                 <Stack.Screen name="BlogDetail" component={BlogDetailScreen} options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>

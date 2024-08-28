@@ -85,21 +85,21 @@ const HomeScreen = ({ navigation }) => {
                 </View>
             </View>
 
-            <TouchableOpacity style={styles.sectionHeader}>
+            <TouchableOpacity onPress={() => navigation.navigate('BlogList')} style={styles.sectionHeader}>
                 <Icon name="book-information-variant" size={24} color="#114232" style={styles.sectionIcon} />
                 <Text style={styles.sectionTitle}>Latest Blogs</Text>
                 <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
             </TouchableOpacity>
             <FlatList data={mockBlogs} renderItem={renderBlog} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
 
-            <TouchableOpacity style={styles.sectionHeader}>
+            <TouchableOpacity onPress={() => navigation.navigate('ItemList')} style={styles.sectionHeader}>
                 <FontIcon name="person-running" size={24} color="#114232" style={styles.sectionIcon} />
                 <Text style={styles.sectionTitle}>Exercises</Text>
                 <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
             </TouchableOpacity>
             <FlatList data={mockExercises} renderItem={renderItem} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
 
-            <TouchableOpacity style={styles.sectionHeader}>
+            <TouchableOpacity onPress={() => navigation.navigate('ItemList')} style={styles.sectionHeader}>
                 <Icon name="puzzle" size={24} color="#114232" style={styles.sectionIcon} />
                 <Text style={styles.sectionTitle}>Did You Know?</Text>
                 <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
