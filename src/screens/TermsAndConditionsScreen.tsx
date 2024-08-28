@@ -1,15 +1,14 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text } from 'react-native';
 
-const PrivacyPolicyScreen = () => {
+const TermsAndConditionsScreen = () => {
     return (
         <ScrollView style={styles.container}>
-            <Text style={styles.title}>Privacy Policy</Text>
+            <Text style={styles.title}>Terms and Conditions</Text>
             <Text style={styles.content}>
-            EndoCare ("we," "our," or "us") is committed to protecting your privacy. 
-            This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application (the "App"). 
-            Please read this Privacy Policy carefully. 
-            If you do not agree with the terms of this Privacy Policy, please do not access the App.
+            Welcome to EndoCare! These Terms and Conditions ("Terms") govern your use of our mobile application (the "App"). 
+            By accessing or using the App, you agree to be bound by these Terms. 
+            If you do not agree with these Terms, please do not use the App.
             </Text>
         </ScrollView>
     );
@@ -33,4 +32,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default PrivacyPolicyScreen;
+export default TermsAndConditionsScreen;

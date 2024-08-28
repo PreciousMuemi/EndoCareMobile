@@ -23,17 +23,17 @@ const SettingsScreen = ({ navigation }) => {
                     />
                 </View>
 
-                <TouchableOpacity style={styles.settingItem} onPress={() => navigation.navigate('privacy')}>
+                <TouchableOpacity style={styles.settingItem} onPress={() => navigation.navigate('Privacy')}>
                     <Text style={styles.settingLabel}>Privacy Policy</Text>
                     <Icon name="chevron-right" size={20} color="#114232" />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.settingItem} onPress={() => navigation.navigate('Login')}>
+                <TouchableOpacity style={styles.settingItem} onPress={() => navigation.navigate('Terms')}>
                     <Text style={styles.settingLabel}>Terms and Conditions</Text>
                     <Icon name="chevron-right" size={20} color="#114232" />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.settingItem} onPress={() => navigation.navigate('contact')}>
+                <TouchableOpacity style={styles.settingItem} onPress={() => navigation.navigate('Contact')}>
                     <Text style={styles.settingLabel}>Contact Us</Text>
                     <Icon name="chevron-right" size={20} color="#114232" />
                 </TouchableOpacity>

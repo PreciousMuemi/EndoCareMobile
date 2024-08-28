@@ -2,9 +2,11 @@ import React from "react";
 import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View, FlatList, Image } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontIcon from 'react-native-vector-icons/FontAwesome6';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 const HEADER_HEIGHT = 50;
+const CAROUSEL_ITEM_WIDTH = width * 0.8;
 
 const getGreetingInfo = () => {
     const hour = new Date().getHours();
@@ -18,22 +20,31 @@ const HomeScreen = ({ navigation }) => {
     const insets = useSafeAreaInsets();
     const greetingInfo = getGreetingInfo();
 
-    const renderListItem = ({ item }) => (
-        <View style={styles.listItem}>
-            <Image source={{ uri: item.image }} style={styles.listItemImage} />
-            <Text style={styles.listItemTitle}>{item.title}</Text>
-        </View>
+    const renderBlog = ({item}) => (
+        <TouchableOpacity style={styles.blogCard}>
+            <Image source={{uri: item.image}} style={styles.blogImage} />
+            <View style={styles.blogInfo}>
+                <Text style={styles.blogTitle}>{item.title}</Text>
+                <View style={styles.blogDetails}>
+                    <Icon name="book-information-variant" size={16} color="#114232" style={styles.icon} />
+                    <Text style={styles.blogDate}>{item.date}</Text>
+                </View>
+            </View>
+        </TouchableOpacity>
     );
 
-    const blogs = [
-        { title: 'Understanding Menstrual Cycles', image: 'https://via.placeholder.com/150' },
-        { title: 'Healthy Habits During Periods', image: 'https://via.placeholder.com/150' },
-    ];
+    const mockBlogs = Array.from({length: 5}, (_, i) => ({
+        id: i,
+        title: `Blog ${i + 1}`,
+        date: '2024-01-01',
+        image: `https://picsum.photos/200/300?random=${i}`,
+    }))
 
-    const exercises = [
-        { title: 'Yoga for Period Pain', image: 'https://via.placeholder.com/150' },
-        { title: 'Simple Stretches', image: 'https://via.placeholder.com/150' },
-    ];
+    const mockExercises = Array.from({length: 5}, (_, i) => ({
+        id: i,
+        title: `Exercise ${i + 1}`,
+        image: `https://picsum.photos/200/300?random=${i}`,
+    }))
 
     const didYouKnow = [
         { title: 'Did you know? Menstrual cycles can...', image: 'https://via.placeholder.com/150' },
@@ -64,46 +75,20 @@ const HomeScreen = ({ navigation }) => {
                 </View>
             </View>
 
-            {/* Blogs Horizontal List */}
-            <View style={styles.listSection}>
-                <Text style={styles.sectionTitle}>Blogs</Text>
-                <FlatList
-                    data={blogs}
-                    renderItem={renderListItem}
-                    keyExtractor={(item, index) => index.toString()}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                />
-            </View>
-
-            {/* Exercises Horizontal List */}
-            <View style={styles.listSection}>
-                <Text style={styles.sectionTitle}>Exercises</Text>
-                <FlatList
-                    data={exercises}
-                    renderItem={renderListItem}
-                    keyExtractor={(item, index) => index.toString()}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                />
-            </View>
-
-            {/* Did You Know Horizontal List */}
-            <View style={styles.listSection}>
-                <Text style={styles.sectionTitle}>Did You Know?</Text>
-                <FlatList
-                    data={didYouKnow}
-                    renderItem={renderListItem}
-                    keyExtractor={(item, index) => index.toString()}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                />
-            </View>
-
-            {/* Chat Button */}
-            <TouchableOpacity style={styles.chatButton} onPress={() => navigation.navigate('Chat')}>
-                <Icon name="chat-outline" size={30} color="#fff" />
+            <TouchableOpacity style={styles.sectionHeader}>
+                <Icon name="book-information-variant" size={24} color="#114232" style={styles.sectionIcon} />
+                <Text style={styles.sectionTitle}>Latest Blogs</Text>
+                <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
             </TouchableOpacity>
+            <FlatList data={mockBlogs} renderItem={renderBlog} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
+
+            <TouchableOpacity style={styles.sectionHeader}>
+                <FontIcon name="person-running" size={24} color="#114232" style={styles.sectionIcon} />
+                <Text style={styles.sectionTitle}>Exercises</Text>
+                <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
+            </TouchableOpacity>
+            <FlatList data={mockExercises} renderItem={renderBlog} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
+
         </ScrollView>
     );
 };
@@ -161,48 +146,59 @@ const styles = StyleSheet.create({
         color: '#333',
         marginTop: 5,
     },
-    listSection: {
-        marginVertical: 20,
-    },
-    sectionTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#114232',
-        paddingHorizontal: 20,
-        marginBottom: 10,
-    },
-    listItem: {
+    blogCard: {
+        width: CAROUSEL_ITEM_WIDTH,
         backgroundColor: '#fff',
         borderRadius: 10,
+        marginRight: 15,
+        elevation: 3,
         overflow: 'hidden',
-        elevation: 2,
-        paddingBottom: 10,
-        marginHorizontal: 10,
-        width: 150,
-        alignItems: 'center',
     },
-    listItemImage: {
+    blogImage: {
         width: '100%',
-        height: 100,
-        resizeMode: 'cover',
+        height: 180,
     },
-    listItemTitle: {
-        fontSize: 14,
+    blogInfo: {
+        padding: 15,
+    },
+    blogTitle: {
+        fontSize: 20,
         fontWeight: 'bold',
-        color: '#114232',
-        padding: 10,
+        color: '#333',
     },
-    chatButton: {
-        position: 'absolute',
-        bottom: 30,
-        right: 30,
-        backgroundColor: '#e83e8c',
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        justifyContent: 'center',
+    blogDetails: {
+        flexDirection: 'row',
         alignItems: 'center',
-        elevation: 5,
+        marginTop: 5,
+    },
+    icon: {
+        marginRight: 5,
+    },
+    blogDate: {
+        fontSize: 14,
+        color: '#666',
+    },
+    sectionHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 15,
+        backgroundColor: '#e8e8e8',
+    },
+    sectionIcon: {
+        marginRight: 10,
+    },
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+        flex: 1,
+    },
+    sectionArrow: {
+        marginLeft: 10,
+    },
+    carouselList: {
+        paddingLeft: 15,
+        paddingVertical: 15,
     },
 });
 
