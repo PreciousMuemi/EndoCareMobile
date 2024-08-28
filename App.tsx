@@ -21,6 +21,7 @@ import NotificationsScreen from './src/screens/NotificationScreen';
 const Stack = createStackNavigator();
 
 const App = () => {
+
     return (
         <>
         <NavigationContainer>
