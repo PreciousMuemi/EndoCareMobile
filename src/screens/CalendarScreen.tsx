@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {View, StyleSheet} from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
 const CalendarScreen = () => {
