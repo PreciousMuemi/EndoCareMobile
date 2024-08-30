@@ -6,6 +6,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import HomeScreen from '../screens/HomeScreen';
 import DonationScreen from '../screens/DonationScreen';
 import CalendarScreen from '../screens/CalendarScreen';
+import CommunityScreen from '../screens/CommunityScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,6 +44,15 @@ function BottomTab() {
             options={{
               tabBarIcon: ({ color, size }) => (
                 <MaterialCommunityIcons name="calendar" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Community"
+            component={CommunityScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons name="account-group" color={color} size={size} />
               ),
             }}
           />
