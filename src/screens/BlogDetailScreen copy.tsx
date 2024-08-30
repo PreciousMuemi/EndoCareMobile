@@ -112,6 +112,7 @@ const BlogDetailScreen = ({route, navigation}) => {
         <TextInput
           style={styles.commentInput}
           placeholder="Add a comment..."
+          placeholderTextColor="#333"
           value={comment}
           onChangeText={setComment}
         />
@@ -139,6 +140,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#333',
   },
   postContainer: {
     padding: 15,
@@ -157,6 +159,7 @@ const styles = StyleSheet.create({
   authorName: {
     fontWeight: 'bold',
     fontSize: 16,
+    color: '#333',
   },
   timestamp: {
     color: '#666',
@@ -165,6 +168,7 @@ const styles = StyleSheet.create({
   content: {
     fontSize: 16,
     marginBottom: 10,
+    color: '#333',
   },
   postImage: {
     width: width - 30,
@@ -194,6 +198,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#333',
   },
   commentContainer: {
     marginBottom: 10,
@@ -201,6 +206,7 @@ const styles = StyleSheet.create({
   commentAuthor: {
     fontWeight: 'bold',
     marginBottom: 2,
+    color: '#333',
   },
   commentContent: {
     color: '#333',
@@ -219,6 +225,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 8,
     marginRight: 10,
+    color: '#333',
   },
   sendButton: {
     justifyContent: 'center',

@@ -21,6 +21,7 @@ const DonationScreen = () => {
         value={name}
         onChangeText={setName}
         placeholder="Enter your name"
+        placeholderTextColor="#333"
       />
 
       {/* Donation Amount Input */}
@@ -31,6 +32,7 @@ const DonationScreen = () => {
         value={amount}
         onChangeText={setAmount}
         placeholder="Enter amount"
+        placeholderTextColor="#333"
       />
 
       {/* Donate Button */}
@@ -68,7 +70,8 @@ const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 20,
     backgroundColor: '#ffffff',
-  },   
+    color: '#333',
+  },
   button: {
     backgroundColor: '#114232',
     padding: 15,

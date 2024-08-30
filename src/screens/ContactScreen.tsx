@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, TextInput, Button, Linking } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, TextInput, Button, Linking, TouchableOpacity } from 'react-native';
 
 const ContactUsScreen = () => {
     const handleSubmit = () => {
@@ -13,30 +13,9 @@ const ContactUsScreen = () => {
 
             <View style={styles.contactSection}>
                 <Text style={styles.sectionTitle}>Email Support</Text>
-                <Text style={styles.contactInfo} onPress={() => Linking.openURL('mailto:support@yourapp.com')}>
-                    support@yourapp.com
+                <Text style={styles.contactInfo} onPress={() => Linking.openURL('mailto:support@endocare.com')}>
+                    support@endocare.com
                 </Text>
-            </View>
-
-            <View style={styles.contactSection}>
-                <Text style={styles.sectionTitle}>Phone Support</Text>
-                <Text style={styles.contactInfo} onPress={() => Linking.openURL('tel:+1234567890')}>
-                    +1 234 567 890
-                </Text>
-            </View>
-
-            <View style={styles.contactSection}>
-                <Text style={styles.sectionTitle}>Mailing Address</Text>
-                <Text style={styles.contactInfo}>123 App Street, Suite 456, Your City, Country</Text>
-            </View>
-
-            <View style={styles.contactSection}>
-                <Text style={styles.sectionTitle}>Follow Us</Text>
-                <View style={styles.socialMedia}>
-                    <Text style={styles.socialMediaLink} onPress={() => Linking.openURL('https://facebook.com/yourapp')}>Facebook</Text>
-                    <Text style={styles.socialMediaLink} onPress={() => Linking.openURL('https://twitter.com/yourapp')}>Twitter</Text>
-                    <Text style={styles.socialMediaLink} onPress={() => Linking.openURL('https://instagram.com/yourapp')}>Instagram</Text>
-                </View>
             </View>
 
             <View style={styles.contactSection}>
@@ -44,22 +23,29 @@ const ContactUsScreen = () => {
                 <TextInput
                     style={styles.input}
                     placeholder="Name"
+                    placeholderTextColor="#333"
                 />
                 <TextInput
                     style={styles.input}
                     placeholder="Email Address"
                     keyboardType="email-address"
+                    placeholderTextColor="#333"
                 />
                 <TextInput
                     style={styles.input}
                     placeholder="Subject"
+                    placeholderTextColor="#333"
                 />
                 <TextInput
                     style={styles.textArea}
                     placeholder="Message"
+                    placeholderTextColor="#333"
                     multiline
                 />
-                <Button title="Submit" onPress={handleSubmit} />
+                <TouchableOpacity
+                style={styles.button}>
+                <Text style={styles.buttonText}>Submit</Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     );
@@ -93,15 +79,7 @@ const styles = StyleSheet.create({
     },
     contactInfo: {
         fontSize: 16,
-        color: '#007bff',
-    },
-    socialMedia: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-    },
-    socialMediaLink: {
-        fontSize: 16,
-        color: '#007bff',
+        color: '#114232',
     },
     input: {
         height: 40,
@@ -110,6 +88,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingHorizontal: 10,
         marginBottom: 10,
+        color: '#333',
     },
     textArea: {
         height: 100,
@@ -119,6 +98,18 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         marginBottom: 10,
         textAlignVertical: 'top',
+        color: '#333',
+    },
+    button: {
+        backgroundColor: '#114232',
+        padding: 15,
+        borderRadius: 25,
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: 'bold',
     },
     footer: {
         fontSize: 14,
@@ -126,7 +117,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     link: {
-        color: '#007bff',
+        color: '114232',
     },
 });
 

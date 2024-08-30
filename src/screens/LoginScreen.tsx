@@ -12,22 +12,20 @@ const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Handle login logic
-  };
-
   return (
     <View style={styles.container}>
       <Animatable.View animation="fadeInUp" style={styles.formContainer}>
         <TextInput
           style={styles.input}
           placeholder="Email"
+          placeholderTextColor="#333"
           value={email}
           onChangeText={setEmail}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
+          placeholderTextColor="#333"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -62,6 +60,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     marginBottom: 20,
+    color: '#333',
   },
   loginButton: {
     backgroundColor: '#114232',
