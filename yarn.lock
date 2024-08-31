@@ -1610,6 +1610,14 @@
 "@types/prop-types@*":
   version "15.7.12"
 
+"@types/react-native-calendar-picker@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.npmjs.org/@types/react-native-calendar-picker/-/react-native-calendar-picker-8.0.0.tgz"
+  integrity sha512-Mymc+MxHx2ue+YoTdF6nnu9V7r2Sxn2eecFZ5qX3B+87MAMBAd7+/jaJzfUVEkIeb8rQKhWiYI1QvvN+hCglXw==
+  dependencies:
+    "@types/react" "*"
+    react-native "*"
+
 "@types/react-native-snap-carousel@^3.8.11":
   version "3.8.11"
   resolved "https://registry.npmjs.org/@types/react-native-snap-carousel/-/react-native-snap-carousel-3.8.11.tgz"
@@ -1633,13 +1641,22 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-native@^0.73.0":
+  version "0.73.0"
+  resolved "https://registry.npmjs.org/@types/react-native/-/react-native-0.73.0.tgz"
+  integrity sha512-6ZRPQrYM72qYKGWidEttRe6M5DZBEV5F+MHMHqd4TTYx0tfkcdrUFGdef6CCxY0jXU7wldvd/zA/b0A/kTeJmA==
+  dependencies:
+    react-native "*"
+
 "@types/react-test-renderer@^18.0.0":
   version "18.3.0"
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^18.2.6":
-  version "18.3.4"
+"@types/react@*", "@types/react@^18.2.6", "@types/react@^18.3.5":
+  version "18.3.5"
+  resolved "https://registry.npmjs.org/@types/react/-/react-18.3.5.tgz"
+  integrity sha512-WeqMfGJLGuLCqHGYRGHxnKrXcTitc6L/nBUWfWPcTarG3t9PsquqUMuVeXZeca+mglY4Vo5GZjCi0A3Or2lnxA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -4057,7 +4074,7 @@ mkdirp@^0.5.1:
 mkdirp@^1.0.4:
   version "1.0.4"
 
-moment@^2.29.4:
+moment@^2.29.4, moment@>=2.0.0:
   version "2.30.1"
   resolved "https://registry.npmjs.org/moment/-/moment-2.30.1.tgz"
   integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
@@ -4103,6 +4120,11 @@ node-fetch@^2.2.0:
 
 node-forge@^1:
   version "1.3.1"
+
+node-git-hooks@^1.0.1:
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/node-git-hooks/-/node-git-hooks-1.0.7.tgz"
+  integrity sha512-IgIbLXsONu4sfHVaaTxQvVbNfo36ZxqCbzmataI/4hbwqmX2Eth4Vdxw9NvAAeroVuxzzmHqjVlV9TeHb3U2yw==
 
 node-int64@^0.4.0:
   version "0.4.0"
@@ -4366,7 +4388,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.10, prop-types@^15.7.2, prop-types@^15.8.1, prop-types@15.8.1:
+prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.7.2, prop-types@^15.8.1, prop-types@15.8.1:
   version "15.8.1"
   dependencies:
     loose-envify "^1.4.0"
@@ -4444,6 +4466,15 @@ react-native-animated-bottom-drawer@^0.0.23:
   version "0.0.23"
   resolved "https://registry.npmjs.org/react-native-animated-bottom-drawer/-/react-native-animated-bottom-drawer-0.0.23.tgz"
   integrity sha512-xOYOWxNViNno9wtYtvDpW90M5N4RDgdLq2jRjR9lxTAcpKsl93C7oex/NANQzd5aC9Vh7SEnyh0DlbSqprB6kg==
+
+react-native-calendar-picker@^6.1.5:
+  version "6.1.5"
+  resolved "https://registry.npmjs.org/react-native-calendar-picker/-/react-native-calendar-picker-6.1.5.tgz"
+  integrity sha512-ON9PExYyF8gXjhYk9hnb0nTGotXJQvczuhmF4WsK2b7p1pckQns6yyy85ypmUfONJS3/ds3P3XT/nm1s1qIluA==
+  dependencies:
+    node-git-hooks "^1.0.1"
+    prop-types "^15.6.0"
+    uuid "3.2.1"
 
 react-native-calendars@^1.1306.0:
   version "1.1306.0"
@@ -4573,8 +4604,10 @@ react-test-renderer@18.3.1:
     react-shallow-renderer "^16.15.0"
     scheduler "^0.23.2"
 
-react@*, "react@^16.0.0 || ^17.0.0 || ^18.0.0", react@^18.2.0, react@^18.3.1, "react@>= 15.2.1", react@>=16.8, react@>=17.0.0, react@18.3.1:
+react@*, "react@^16.0.0 || ^17.0.0 || ^18.0.0", react@^18.2.0, react@^18.3.1, "react@>= 15.2.1", react@>=16.8, react@>=17.0.0:
   version "18.3.1"
+  resolved "https://registry.npmjs.org/react/-/react-18.3.1.tgz"
+  integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
   dependencies:
     loose-envify "^1.1.0"
 
@@ -5228,6 +5261,11 @@ util-deprecate@^1.0.1, util-deprecate@~1.0.1:
 
 utils-merge@1.0.1:
   version "1.0.1"
+
+uuid@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.npmjs.org/uuid/-/uuid-3.2.1.tgz"
+  integrity sha512-jZnMwlb9Iku/O3smGWvZhauCf6cvvpKi4BKRiliS3cxnI+Gz9j5MEpTz2UFuXiKPJocb7gnsLHwiS05ige5BEA==
 
 v8-to-istanbul@^9.0.1:
   version "9.3.0"
