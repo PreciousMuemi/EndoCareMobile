@@ -26,41 +26,41 @@ const BlogListScreen = ({navigation}) => {
 
   const mockEvents = [
     {
-      id: 1,
-      title: 'Understanding Endometriosis',
-      date: 'July 10, 2024',
-      image: 'https://images.unsplash.com/photo-1506748686214e9df14f8e4e3a1b07d4e2bbd2a2a2a',
-      description: 'Learn about the symptoms and management of endometriosis.',
-    },
-    {
-      id: 2,
-      title: 'Living with Endometriosis',
-      date: 'July 12, 2024',
-      image: 'https://images.unsplash.com/photo-1540307657322-5dcd5b2b1db4',
-      description: 'Tips and advice for daily life with endometriosis.',
-    },
-    {
-      id: 3,
-      title: 'Managing Pain with Endometriosis',
-      date: 'July 15, 2024',
-      image: 'https://images.unsplash.com/photo-1565933055-26a923d8e611',
-      description: 'Effective pain management strategies for endometriosis.',
-    },
-    {
-      id: 4,
-      title: 'Endometriosis Treatments',
-      date: 'July 18, 2024',
-      image: 'https://images.unsplash.com/photo-1556740749-2c0d6c38b9e0',
-      description: 'Explore different treatment options for endometriosis.',
-    },
-    {
-      id: 5,
-      title: 'Empowering Your Endometriosis Journey',
-      date: 'July 22, 2024',
-      image: 'https://images.unsplash.com/photo-1530030402740-f9b4e546c0ae',
-      description: 'How to take control and live well with endometriosis.',
-    },
-  ];
+        id: 1,
+        title: 'Understanding Endometriosis',
+        date: 'July 10, 2024',
+        image: 'https://plus.unsplash.com/premium_photo-1702598564277-0984e20bafb7?q=80&w=2036&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        description: 'Learn about the symptoms and management of endometriosis.',
+      },
+      {
+        id: 2,
+        title: 'Living with Endometriosis',
+        date: 'July 12, 2024',
+        image: 'https://plus.unsplash.com/premium_photo-1661573742366-5b83baca6671?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        description: 'Tips and advice for daily life with endometriosis.',
+      },
+      {
+        id: 3,
+        title: 'Managing Pain with Endometriosis',
+        date: 'July 15, 2024',
+        image: 'https://plus.unsplash.com/premium_photo-1661593432672-8d3e350eb5a8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        description: 'Effective pain management strategies for endometriosis.',
+      },
+      {
+        id: 4,
+        title: 'Endometriosis Treatments',
+        date: 'July 18, 2024',
+        image: 'https://plus.unsplash.com/premium_photo-1702599088583-d6d0649d1a66?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        description: 'Explore different treatment options for endometriosis.',
+      },
+      {
+        id: 5,
+        title: 'Empowering Your Endometriosis Journey',
+        date: 'July 22, 2024',
+        image: 'https://images.unsplash.com/photo-1580828476460-d1c11a6704bc?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        description: 'How to take control and live well with endometriosis.',
+      },
+];
 
   return (
     <View style={styles.container}>

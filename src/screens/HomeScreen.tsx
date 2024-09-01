@@ -42,22 +42,53 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
     );
 
-    const mockBlogs = Array.from({length: 5}, (_, i) => ({
-        id: i,
-        title: `Blog ${i + 1}`,
-        date: '2024-01-01',
-        image: `https://picsum.photos/200/300?random=${i}`,
-    }));
+    const mockBlogs = [
+        {
+            id: 1,
+            title: 'Understanding Endometriosis',
+            date: 'July 10, 2024',
+            image: 'https://plus.unsplash.com/premium_photo-1702598564277-0984e20bafb7?q=80&w=2036&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            description: 'Learn about the symptoms and management of endometriosis.',
+          },
+          {
+            id: 2,
+            title: 'Living with Endometriosis',
+            date: 'July 12, 2024',
+            image: 'https://plus.unsplash.com/premium_photo-1661573742366-5b83baca6671?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            description: 'Tips and advice for daily life with endometriosis.',
+          },
+          {
+            id: 3,
+            title: 'Managing Pain with Endometriosis',
+            date: 'July 15, 2024',
+            image: 'https://plus.unsplash.com/premium_photo-1661593432672-8d3e350eb5a8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            description: 'Effective pain management strategies for endometriosis.',
+          },
+          {
+            id: 4,
+            title: 'Endometriosis Treatments',
+            date: 'July 18, 2024',
+            image: 'https://plus.unsplash.com/premium_photo-1702599088583-d6d0649d1a66?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            description: 'Explore different treatment options for endometriosis.',
+          },
+          {
+            id: 5,
+            title: 'Empowering Your Endometriosis Journey',
+            date: 'July 22, 2024',
+            image: 'https://images.unsplash.com/photo-1580828476460-d1c11a6704bc?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            description: 'How to take control and live well with endometriosis.',
+          },
+    ];
 
     const mockExercises = Array.from({length: 5}, (_, i) => ({
         id: i,
         title: `Exercise ${i + 1}`,
-        image: `https://picsum.photos/200/300?random=${i}`,
+        image: `https://plus.unsplash.com/premium_photo-1675691165834-4ba30901e4bc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
     }));
 
     const mockDidYouKnow = Array.from({length: 5}, (_, i) =>({
         id: i,
-        title: `Did you know ${i + 1}`,
+        title: `Insight${i + 1}`,
         image: `https://picsum.photos/200/300?random=${i}`,
     }));
 
@@ -101,7 +132,7 @@ const HomeScreen = ({ navigation }) => {
 
             <TouchableOpacity onPress={() => navigation.navigate('ItemList')} style={styles.sectionHeader}>
                 <Icon name="puzzle" size={24} color="#114232" style={styles.sectionIcon} />
-                <Text style={styles.sectionTitle}>Did You Know?</Text>
+                <Text style={styles.sectionTitle}>Insights</Text>
                 <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
             </TouchableOpacity>
             <FlatList data={mockDidYouKnow} renderItem={renderItem} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
