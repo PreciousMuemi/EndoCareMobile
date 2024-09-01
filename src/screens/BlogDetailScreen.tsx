@@ -25,20 +25,20 @@ const BlogDetailScreen = ({route, navigation}) => {
     author: 'Jane Doe',
     avatar: 'https://picsum.photos/id/64/100/100',
     content:
-      'Just attended an amazing workshop on campus sustainability! So inspired by all the great initiatives our university is taking. #CampusLife #Sustainability',
-    image: 'https://picsum.photos/id/42/1000/1000',
+      'Endometriosis is a chronic condition where tissue similar to the uterine lining grows outside the uterus, causing pain and potential fertility issues. Raising awareness is essential to ensure those affected receive proper diagnosis, treatment, and support. #EndoCare',
+    image: 'https://images.unsplash.com/photo-1517498327491-f903e1e281cd?q=80&w=1836&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     likes: 42,
     comments: [
       {
         id: 1,
-        author: 'John Smith',
+        author: 'Cynthia Muemi',
         content:
-          "That's awesome! Which initiative did you find most interesting?",
+          "Endometriosis awareness is so important—too many women suffer in silence.",
       },
       {
         id: 2,
         author: 'Alice Johnson',
-        content: 'I wish I could have attended. Thanks for sharing!',
+        content: 'Thank you for shedding light on this condition; more people need to know about it!',
       },
     ],
     timestamp: '2 hours ago',
@@ -197,12 +197,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#333',
   },
   commentContainer: {
     marginBottom: 10,
   },
   commentAuthor: {
     fontWeight: 'bold',
+    color: '#333',
     marginBottom: 2,
   },
   commentContent: {
