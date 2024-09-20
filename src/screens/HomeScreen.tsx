@@ -94,6 +94,11 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <ScrollView style={[styles.container, { paddingTop: insets.top }]}>
+
+            <TouchableOpacity style={styles.chatbotIcon}>
+                <Icon name="chat-question-outline" size={38} color="#114232" />
+            </TouchableOpacity>
+
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>EndoCare</Text>
                 <View style={styles.headerIcons}>
@@ -145,6 +150,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f0f0f0',
+    },
+    chatbotIcon: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
     },
     header: {
         height: HEADER_HEIGHT,
