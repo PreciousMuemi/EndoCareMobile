@@ -1,12 +1,14 @@
-import React from "react";
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View, FlatList, Image } from "react-native";
+import React, { useRef, useState } from "react";
+import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View, FlatList, Image, Animated } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontIcon from 'react-native-vector-icons/FontAwesome6';
+import { GiftedChat } from 'react-native-gifted-chat';
 
-const {width} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 const HEADER_HEIGHT = 50;
 const CAROUSEL_ITEM_WIDTH = width * 0.8;
+const DRAWER_HEIGHT = height * 0.7;
 
 const getGreetingInfo = () => {
     const hour = new Date().getHours();
@@ -19,6 +21,29 @@ const getGreetingInfo = () => {
 const HomeScreen = ({ navigation }) => {
     const insets = useSafeAreaInsets();
     const greetingInfo = getGreetingInfo();
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [messages, setMessages] = useState([]);
+    const drawerAnimation = useRef(new Animated.Value(0)).current;
+
+    const toggleDrawer = () => {
+        const toValue = isDrawerOpen ? 0 : 1;
+        Animated.spring(drawerAnimation, {
+            toValue,
+            useNativeDriver: true,
+        }).start();
+        setIsDrawerOpen(!isDrawerOpen);
+    };
+
+    const onSend = (newMessages = []) => {
+        setMessages(prevMessages => GiftedChat.append(prevMessages, newMessages));
+        // Here you would typically send the message to your Gemini API
+        // and handle the response
+    };
+    
+    const drawerTranslateY = drawerAnimation.interpolate({
+        inputRange: [0, 1],
+        outputRange: [DRAWER_HEIGHT, 0],
+    });
 
     const renderBlog = ({item}) => (
         <TouchableOpacity onPress={() => navigation.navigate('BlogDetail', {blogId: item.id})} style={styles.blogCard}>
@@ -93,56 +118,100 @@ const HomeScreen = ({ navigation }) => {
     }));
 
     return (
-        <ScrollView style={[styles.container, { paddingTop: insets.top }]}>
+        <View style={[styles.container, { paddingTop: insets.top }]}>
+            <ScrollView>
+                <View style={styles.header}>
+                    <Text style={styles.headerTitle}>EndoCare</Text>
+                    <View style={styles.headerIcons}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Notifications')} style={styles.headerIcon}>
+                            <Icon name="bell" size={20} color="#114232" />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Profile')} style={styles.headerIcon}>
+                            <Icon name="account-supervisor-circle-outline" size={20} color="#114232" />
+                        </TouchableOpacity>
+                    </View>
+                </View>
 
-            <TouchableOpacity style={styles.chatbotIcon}>
-                <Icon name="chat-question-outline" size={38} color="#114232" />
+                <View style={styles.greetingSection}>
+                    <View style={styles.greetingIconContainer}>
+                        <Icon name={greetingInfo.icon} size={40} color="#114232" />
+                    </View>
+                    <View style={styles.greetingTextContainer}>
+                        <Text style={styles.greetingText}>{greetingInfo.text} Baby girl</Text>
+                        <Text style={styles.greetingSubtext}>How are you feeling today?</Text>
+                    </View>
+                </View>
+
+                <TouchableOpacity onPress={() => navigation.navigate('BlogList')} style={styles.sectionHeader}>
+                    <Icon name="book-information-variant" size={24} color="#114232" style={styles.sectionIcon} />
+                    <Text style={styles.sectionTitle}>Latest Blogs</Text>
+                    <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
+                </TouchableOpacity>
+                <FlatList 
+                    data={mockBlogs} 
+                    renderItem={renderBlog} 
+                    keyExtractor={item => item.id.toString()} 
+                    horizontal 
+                    showsHorizontalScrollIndicator={false} 
+                    contentContainerStyle={styles.carouselList} 
+                    snapToInterval={CAROUSEL_ITEM_WIDTH + 15} 
+                    decelerationRate="fast" 
+                />
+
+                <TouchableOpacity onPress={() => navigation.navigate('ItemList')} style={styles.sectionHeader}>
+                    <FontIcon name="person-running" size={24} color="#114232" style={styles.sectionIcon} />
+                    <Text style={styles.sectionTitle}>Exercises</Text>
+                    <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
+                </TouchableOpacity>
+                <FlatList 
+                    data={mockExercises} 
+                    renderItem={renderItem} 
+                    keyExtractor={item => item.id.toString()} 
+                    horizontal 
+                    showsHorizontalScrollIndicator={false} 
+                    contentContainerStyle={styles.carouselList} 
+                    snapToInterval={CAROUSEL_ITEM_WIDTH + 15} 
+                    decelerationRate="fast" 
+                />
+
+                <TouchableOpacity onPress={() => navigation.navigate('ItemList')} style={styles.sectionHeader}>
+                    <Icon name="puzzle" size={24} color="#114232" style={styles.sectionIcon} />
+                    <Text style={styles.sectionTitle}>Insights</Text>
+                    <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
+                </TouchableOpacity>
+                <FlatList 
+                    data={mockDidYouKnow} 
+                    renderItem={renderItem} 
+                    keyExtractor={item => item.id.toString()} 
+                    horizontal 
+                    showsHorizontalScrollIndicator={false} 
+                    contentContainerStyle={styles.carouselList} 
+                    snapToInterval={CAROUSEL_ITEM_WIDTH + 15} 
+                    decelerationRate="fast" 
+                />
+            </ScrollView>
+
+            <TouchableOpacity style={styles.chatbotIcon} onPress={toggleDrawer}>
+                <Icon name="chat" size={30} color="#114232" />
             </TouchableOpacity>
 
-            <View style={styles.header}>
-                <Text style={styles.headerTitle}>EndoCare</Text>
-                <View style={styles.headerIcons}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Notifications')} style={styles.headerIcon}>
-                        <Icon name="bell" size={20} color="#114232" />
+            <Animated.View style={[
+                styles.drawer,
+                { transform: [{ translateY: drawerTranslateY }] }
+            ]}>
+                <View style={styles.drawerHeader}>
+                    <Text style={styles.drawerTitle}>Chat with EndoBot</Text>
+                    <TouchableOpacity onPress={toggleDrawer}>
+                        <Icon name="close" size={24} color="#114232" />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('Profile')} style={styles.headerIcon}>
-                        <Icon name="account-supervisor-circle-outline" size={20} color="#114232" />
-                    </TouchableOpacity>
                 </View>
-            </View>
-
-            <View style={styles.greetingSection}>
-                <View style={styles.greetingIconContainer}>
-                    <Icon name={greetingInfo.icon} size={40} color="#114232" />
-                </View>
-                <View style={styles.greetingTextContainer}>
-                    <Text style={styles.greetingText}>{greetingInfo.text} Baby girl</Text>
-                    <Text style={styles.greetingSubtext}>How are you feeling today?</Text>
-                </View>
-            </View>
-
-            <TouchableOpacity onPress={() => navigation.navigate('BlogList')} style={styles.sectionHeader}>
-                <Icon name="book-information-variant" size={24} color="#114232" style={styles.sectionIcon} />
-                <Text style={styles.sectionTitle}>Latest Blogs</Text>
-                <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
-            </TouchableOpacity>
-            <FlatList data={mockBlogs} renderItem={renderBlog} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
-
-            <TouchableOpacity onPress={() => navigation.navigate('ItemList')} style={styles.sectionHeader}>
-                <FontIcon name="person-running" size={24} color="#114232" style={styles.sectionIcon} />
-                <Text style={styles.sectionTitle}>Exercises</Text>
-                <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
-            </TouchableOpacity>
-            <FlatList data={mockExercises} renderItem={renderItem} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
-
-            <TouchableOpacity onPress={() => navigation.navigate('ItemList')} style={styles.sectionHeader}>
-                <Icon name="puzzle" size={24} color="#114232" style={styles.sectionIcon} />
-                <Text style={styles.sectionTitle}>Insights</Text>
-                <Icon name="chevron-double-right" size={24} color="#114232" style={styles.sectionArrow} />
-            </TouchableOpacity>
-            <FlatList data={mockDidYouKnow} renderItem={renderItem} keyExtractor={item => item.id.toString} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.carouselList} snapToInterval={CAROUSEL_ITEM_WIDTH + 15} decelerationRate="fast" />
-
-        </ScrollView>
+                <GiftedChat
+                    messages={messages}
+                    onSend={newMessages => onSend(newMessages)}
+                    user={{ _id: 1 }}
+                />
+            </Animated.View>
+        </View>
     );
 };
 
@@ -153,8 +222,39 @@ const styles = StyleSheet.create({
     },
     chatbotIcon: {
         position: 'absolute',
-        bottom: 10,
-        right: 10,
+        bottom: 20,
+        right: 20,
+        backgroundColor: '#F7F6BB',
+        borderRadius: 30,
+        width: 60,
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 5,
+    },
+    drawer: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: DRAWER_HEIGHT,
+        backgroundColor: '#fff',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        elevation: 10,
+    },
+    drawerHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: '#e0e0e0',
+    },
+    drawerTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#114232',
     },
     header: {
         height: HEADER_HEIGHT,
